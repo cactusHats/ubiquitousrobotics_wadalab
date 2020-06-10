@@ -6,7 +6,7 @@
 - 関
 
 ## フォルダ
-# minutes
+### minutes
 - 議事録(.md)
-# note
+### note
 - ipadのスケッチメモ(.png)
