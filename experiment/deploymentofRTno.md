@@ -15,6 +15,30 @@
 - サンプルプログラムにRTno見れた
 - 完了
 
+- Arduino側にもコードを書き込んでみる．
+- エラー...
+
+C:\Program Files (x86)\Arduino\libraries\RTno\EtherTcp.cpp:3:10: fatal error: ../SPI/SPI.h: No such file or directory
+ #include <../SPI/SPI.h>
+          ^~~~~~~~~~~~~~
+compilation terminated.
+
+- SPI.hが無いらしい．
+- 確かに入ってるの小文字でspi.hだったけど，この..の意味が分からない．
+
+- サイトに書いてあったので，RTnoProxy.confの中のポート設定の所をwinのを有効にして，macのを無効にした．
+
+### 解決
+- Arduino1.8.13に更新
+- SPI.hが見つからないエラーが出るものの，パスを修正したらビルドできた．
+- RTno > EtherTcp.cppの
+- #include <../SPI/SPI.h>
+- #include <../Ethernet/Ethernet.h>
+- を，それぞれ
+- #include <../../\hardware\arduino\avr\libraries\SPI\src\SPI.h>
+- #include <../Ethernet/src/Ethernet.h>
+- に変更．
+
 ## RTC側準備
 - サイトの「インストール」タブに，色々あってよく分からなかったけど，vsから普通にやる場合はwinのインストーラ等は不要と見た．
 - それがない人はインストーラからでも出来ますよ的な感じだろう．
@@ -47,18 +71,7 @@
 [RTnoProxy]  - RTnoProtocol::getRTnoProfile() called.
 [RTnoProxy]     - Transfer Profile Request to Arduino.
 
-- Arduino側にもコードを書き込んでみる．
-- エラー...
 
-C:\Program Files (x86)\Arduino\libraries\RTno\EtherTcp.cpp:3:10: fatal error: ../SPI/SPI.h: No such file or directory
- #include <../SPI/SPI.h>
-          ^~~~~~~~~~~~~~
-compilation terminated.
-
-- SPI.hが無いらしい．
-- 確かに入ってるの小文字でspi.hだったけど，この..の意味が分からない．
-
-- サイトに書いてあったので，RTnoProxy.confの中のポート設定の所をwinのを有効にして，macのを無効にした．
 
 # メモ
 - ARnoはいじらないでそのまま使った方が良さそう．
