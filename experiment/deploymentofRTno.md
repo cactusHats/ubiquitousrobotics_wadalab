@@ -4,7 +4,7 @@
 ## 詳細ページ
 - http://ysuga.net/?p=124
 
-# 導入
+# 導入手順
 ## インストール
 - Arduino用ライブラリ
 - RTno(RTC)ソースコード
@@ -12,23 +12,9 @@
 ## Arduino側準備
 - ArduinoのlibrariesにDLしたフォルダごと移動
 - Arduino IDE再起動
-- サンプルプログラムにRTno見れた
-- 完了
+- RTnoのサンプルプログラム確認完了
 
-- Arduino側にもコードを書き込んでみる．
-- エラー...
-
-C:\Program Files (x86)\Arduino\libraries\RTno\EtherTcp.cpp:3:10: fatal error: ../SPI/SPI.h: No such file or directory
- #include <../SPI/SPI.h>
-          ^~~~~~~~~~~~~~
-compilation terminated.
-
-- SPI.hが無いらしい．
-- 確かに入ってるの小文字でspi.hだったけど，この..の意味が分からない．
-
-- サイトに書いてあったので，RTnoProxy.confの中のポート設定の所をwinのを有効にして，macのを無効にした．
-
-### 解決
+### プログラム修正
 - Arduino1.8.13に更新
 - SPI.hが見つからないエラーが出るものの，パスを修正したらビルドできた．
 - RTno > EtherTcp.cppの
@@ -41,20 +27,20 @@ compilation terminated.
 
 ## RTC側準備
 - サイトの「インストール」タブに，色々あってよく分からなかったけど，vsから普通にやる場合はwinのインストーラ等は不要と見た．
-- それがない人はインストーラからでも出来ますよ的な感じだろう．
 - GitHubからコードをDLして，cmake，問題なし．
-- ビルドするとエラー．
 
+### プログラム修正
+- ビルドするとエラー．
 - RTnoProfile.hの
 - const bool operator==(const PortProfile& p) {
 - という関数をconst関数に変更．
 - const bool operator==(const PortProfile& p) const {
+- このまま実行すると，Arduinoを認識できず，コンソール画面が閉じる．
 
-- このまま実行すると，エラー出てコンソール画面が閉じてしまう．
-
-- rtc.confをbuild/srcフォルダにコピー
-- RTnoProxy.cppの38行目のCOM10をCOM6へ変更（デバイスマネージャでCOM番号チェック）
-- ビルドし直してもう一度実行すると，先に進めた・
+1. rtc.confをbuild/srcフォルダにコピー
+2. RTnoProxy.confのCOMポートの設定を有効化
+3. RTnoProxy.cppの38行目のCOM10をCOM6へ変更（デバイスマネージャでCOM番号チェック）
+4. ビルドし直してもう一度実行すると，先に進めた．
 
 [RTnoProxy] Configuration Values
 [RTnoProxy]  - conf.default.connectionType:serial
@@ -70,9 +56,3 @@ compilation terminated.
 [RTnoProxy] Starting up onInitialize sequence.
 [RTnoProxy]  - RTnoProtocol::getRTnoProfile() called.
 [RTnoProxy]     - Transfer Profile Request to Arduino.
-
-
-
-# メモ
-- ARnoはいじらないでそのまま使った方が良さそう．
-- TimedLong型の配列データが出てくるはずだから，それを受け取って，平滑化するためのコンポーネントを作るか...
