@@ -42,17 +42,18 @@
 3. RTnoProxy.cppの38行目のCOM10をCOM6へ変更（デバイスマネージャでCOM番号チェック）
 4. ビルドし直してもう一度実行すると，先に進めた．
 
-[RTnoProxy] Configuration Values
-[RTnoProxy]  - conf.default.connectionType:serial
-[RTnoProxy]  - Serial Port Connection
-[RTnoProxy]     - conf.default.comport:\\.\COM6
-[RTnoProxy]     - conf.default.baudrate:57600
-[RTnoProxy] Opening SerialPort(\\.\COM6)..... [RTnoProxy] Opened.
-[RTnoProxy] Waiting for Startup the arduino...
-[RTnoProxy]  - 3......
-[RTnoProxy]  - 2....
-[RTnoProxy]  - 1..
-[RTnoProxy]  - Go!
-[RTnoProxy] Starting up onInitialize sequence.
-[RTnoProxy]  - RTnoProtocol::getRTnoProfile() called.
-[RTnoProxy]     - Transfer Profile Request to Arduino.
+- 正常時のコンソール出力画面  
+[RTnoProxy] Configuration Values  
+[RTnoProxy]  - conf.default.connectionType:serial  
+[RTnoProxy]  - Serial Port Connection  
+[RTnoProxy]     - conf.default.comport:\\.\COM6  
+[RTnoProxy]     - conf.default.baudrate:57600  
+[RTnoProxy] Opening SerialPort(\\.\COM6)..... [RTnoProxy] Opened.  
+[RTnoProxy] Waiting for Startup the arduino...  
+[RTnoProxy]  - 3......  
+[RTnoProxy]  - 2....  
+[RTnoProxy]  - 1..  
+[RTnoProxy]  - Go!  
+[RTnoProxy] Starting up onInitialize sequence.  
+[RTnoProxy]  - RTnoProtocol::getRTnoProfile() called.  
+[RTnoProxy]     - Transfer Profile Request to Arduino.  
