@@ -17,7 +17,7 @@
 ### プログラム修正
 - Arduino1.8.13に更新
 - SPI.hが見つからないエラーが出るものの，パスを修正したらビルドできた．
-- RTno > EtherTcp.cppの
+- RTno > EtherTcp.cppの  
 #include <../SPI/SPI.h>  
 #include <../Ethernet/Ethernet.h>  
 を，それぞれ  
