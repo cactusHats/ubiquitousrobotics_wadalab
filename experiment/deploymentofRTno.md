@@ -18,12 +18,12 @@
 - Arduino1.8.13に更新
 - SPI.hが見つからないエラーが出るものの，パスを修正したらビルドできた．
 - RTno > EtherTcp.cppの
-- #include <../SPI/SPI.h>
-- #include <../Ethernet/Ethernet.h>
-- を，それぞれ
-- #include <../../\hardware\arduino\avr\libraries\SPI\src\SPI.h>
-- #include <../Ethernet/src/Ethernet.h>
-- に変更．
+#include <../SPI/SPI.h>  
+#include <../Ethernet/Ethernet.h>  
+を，それぞれ  
+#include <../../\hardware\arduino\avr\libraries\SPI\src\SPI.h>  
+#include <../Ethernet/src/Ethernet.h>  
+に変更．  
 
 ## RTC側準備
 - サイトの「インストール」タブに，色々あってよく分からなかったけど，vsから普通にやる場合はwinのインストーラ等は不要と見た．
@@ -32,10 +32,10 @@
 ### プログラム修正
 - ビルドするとエラー．
 - RTnoProfile.hの
-- const bool operator==(const PortProfile& p) {
-- という関数をconst関数に変更．
-- const bool operator==(const PortProfile& p) const {
-- このまま実行すると，Arduinoを認識できず，コンソール画面が閉じる．
+const bool operator==(const PortProfile& p) {  
+という関数をconst関数に変更．  
+const bool operator==(const PortProfile& p) const {  
+- このまま実行すると，Arduinoを認識できず，コンソール画面が閉じる．  
 
 1. rtc.confをbuild/srcフォルダにコピー
 2. RTnoProxy.confのCOMポートの設定を有効化
