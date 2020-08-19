@@ -21,7 +21,7 @@
 #include <../SPI/SPI.h>  
 #include <../Ethernet/Ethernet.h>  
 を，それぞれ  
-#include <../../hardware/arduino/avr/libraries/SPI/src/SPI.h>
+#include <../../hardware/arduino/avr/libraries/SPI/src/SPI.h>  
 #include <../Ethernet/src/Ethernet.h>  
 に変更．  
 
